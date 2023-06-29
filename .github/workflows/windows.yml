@@ -17,7 +17,7 @@ jobs:
         run: docker build  -f ./windows/Dockerfile -t python-ssh-exe-windows .
       
       - name: Run Docker container
-        run: docker run --rm  --mount type=bind,src=${{ github.workspace }}\windows\dist\,dst=C:\dist\ python-ssh-exe-windows powershell -Command "pyinstaller main.py --onedir --onefile --clean --distpath /dist --workpath /windows/build --specpath /windows"
+        run: docker run --rm  -v ${{ github.workspace }}\windows\dist\:C:\dist\ python-ssh-exe-windows powershell -Command "pyinstaller main.py --onedir --onefile --clean --distpath /dist --workpath /windows/build --specpath /windows"
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
