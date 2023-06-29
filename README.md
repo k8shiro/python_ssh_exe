@@ -1,0 +1,2 @@
+# python_ssh_exe
+pythonベースのssh先でコマンド実行するコードのexe化
